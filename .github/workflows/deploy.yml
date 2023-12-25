@@ -25,14 +25,9 @@ jobs:
           chmod 600 ${HOME}/VFix.pem
 
       - name: Copy project to server
-        uses: appleboy/scp-action@master
-        with:
-          host: 54.70.76.118
-          username: ubuntu
-          key: ${{ runner.home }}/VFix.pem
-          source: "majid.tar.gz"
-          target: "~"
-          overwrite: true
+        run: |
+          scp -i $HOME/VFix.pem -o StrictHostKeyChecking=no majid.tar.gz ubuntu@54.70.76.118:~
+        
 
       - name: Deploy project
         uses: appleboy/ssh-action@master
