@@ -28,24 +28,21 @@ jobs:
         run: |
           scp -i $HOME/VFix.pem -o StrictHostKeyChecking=no majid.tar.gz ubuntu@54.70.76.118:~
         
-
       - name: Deploy project
-        uses: appleboy/ssh-action@master
-        with:
-          host: 54.70.76.118
-          username: ubuntu
-          key: ${{ runner.home }}/VFix.pem
-          script: |
-            mkdir majid-temp
-            tar xf majid.tar.gz -C majid-temp 2> /dev/null
-            rm majid.tar.gz
-            cd majid-temp
-            find . -name '._*' -exec rm {} \;
-            npm i
-            npm run build
-            cd ..
-            rm -rf majid
-            mv majid-temp majid
-            cd majid
-            pm2 delete majid
-            pm2 start npm --name "majid" -- start
+        run: |
+          ssh -i $HOME/VFix.pem -o StrictHostKeyChecking=no ubuntu@54.70.76.118 "
+            mkdir -p majid-temp &&
+            tar xf majid.tar.gz -C majid-temp 2> /dev/null &&
+            rm majid.tar.gz &&
+            cd majid-temp &&
+            find . -name '._*' -exec rm {} \; &&
+            npm i &&
+            npm run build &&
+            cd .. &&
+            rm -rf majid &&
+            mv majid-temp majid &&
+            cd majid &&
+            pm2 delete majid --silent &&
+            pm2 start npm --name 'majid' -- start
+          "
+        
