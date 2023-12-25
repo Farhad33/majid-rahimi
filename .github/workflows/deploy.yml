@@ -1,0 +1,55 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # Set this to the branch you want to deploy from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Archive project
+        run: |
+          tar czf VFixWeb-5.tar.gz components pages .babelrc package.json postcss.config.js Robots.txt styles public
+
+      - name: Decode SSH key
+        env:
+          SSH_PRIVATE_KEY_BASE64: ${{ secrets.SSH_PRIVATE_KEY_BASE64 }}
+        run: |
+          echo "$SSH_PRIVATE_KEY_BASE64" | base64 --decode > ${HOME}/VFix.pem
+          chmod 600 ${HOME}/VFix.pem
+
+      - name: Copy project to server
+        uses: appleboy/scp-action@master
+        with:
+          host: 54.70.76.118
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY_BASE64 }}
+          source: "VFixWeb-5.tar.gz"
+          target: "~"
+
+      - name: Deploy project
+        uses: appleboy/ssh-action@master
+        with:
+          host: 54.70.76.118
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY_BASE64 }}
+          script: |
+            mkdir VFixWeb-temp
+            tar xf VFixWeb-5.tar.gz -C VFixWeb-temp 2> /dev/null
+            rm VFixWeb-5.tar.gz
+            cd VFixWeb-temp
+            find . -name '._*' -exec rm {} \;
+            npm i
+            npm run build
+            cd ..
+            rm -rf VFixWeb-5
+            mv VFixWeb-temp VFixWeb-5
+            cd VFixWeb-5
+            pm2 delete VFixWeb-5
+            pm2 start npm --name "VFixWeb-5" -- start
