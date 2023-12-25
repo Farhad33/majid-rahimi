@@ -15,7 +15,7 @@ jobs:
 
       - name: Archive project
         run: |
-          tar czf VFixWeb-5.tar.gz components pages .babelrc package.json postcss.config.js Robots.txt styles public
+          tar czf majid.tar.gz postcss.cofig.js package.json next.config.js jsconfig.json src public
 
       - name: Decode SSH key
         env:
@@ -30,7 +30,7 @@ jobs:
           host: 54.70.76.118
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY_BASE64 }}
-          source: "VFixWeb-5.tar.gz"
+          source: "majid.tar.gz"
           target: "~"
 
       - name: Deploy project
@@ -40,16 +40,16 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY_BASE64 }}
           script: |
-            mkdir VFixWeb-temp
-            tar xf VFixWeb-5.tar.gz -C VFixWeb-temp 2> /dev/null
-            rm VFixWeb-5.tar.gz
-            cd VFixWeb-temp
+            mkdir majid-temp
+            tar xf majid.tar.gz -C majid-temp 2> /dev/null
+            rm majid.tar.gz
+            cd majid-temp
             find . -name '._*' -exec rm {} \;
             npm i
             npm run build
             cd ..
-            rm -rf VFixWeb-5
-            mv VFixWeb-temp VFixWeb-5
-            cd VFixWeb-5
-            pm2 delete VFixWeb-5
-            pm2 start npm --name "VFixWeb-5" -- start
+            rm -rf majid
+            mv majid-temp majid
+            cd majid
+            pm2 delete majid
+            pm2 start npm --name "majid" -- start
