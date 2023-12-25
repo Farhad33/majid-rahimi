@@ -29,9 +29,10 @@ jobs:
         with:
           host: 54.70.76.118
           username: ubuntu
-          key: ${{ secrets.SSH_PRIVATE_KEY_BASE64 }}
+          key: "${{ env.HOME }}/VFix.pem"
           source: "majid.tar.gz"
           target: "~"
+          overwrite: true
 
       - name: Deploy project
         uses: appleboy/ssh-action@master
