@@ -15,7 +15,7 @@ jobs:
 
       - name: Archive project
         run: |
-          tar czf majid.tar.gz postcss.config.js package.json next.config.js jsconfig.json src public
+          tar czf majid.tar.gz package.json next.config.js jsconfig.json src public
 
       - name: Decode SSH key
         env:
