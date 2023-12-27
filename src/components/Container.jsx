@@ -1,9 +1,16 @@
 'use client'
 import Styled from 'styled-components'
 
-export default function Container({ column, center, children, as='div', className }) {
+export default function Container({ column,
+    center,
+    children,
+    as='div',
+    className,
+    onClick
+}) {
     return (
         <ContainerComponent
+            onClick={onClick}
             className={className}
             as={as}
             $column={column}

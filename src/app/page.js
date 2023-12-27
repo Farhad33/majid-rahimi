@@ -11,14 +11,14 @@ export default function HomePage() {
     <Container column center>
       <HomePageBox
         title='Data Structure and Algorithm'
-        img='/algorithm.png'
+        img='/algorithm.svg'
         link='/algorithms'
         description='This section contians a collection of Data Structures and Algorithms that I have worked on recently.'
       />
       <HomePageBox
         title='Interview Questions'
-        img='/interview.png'
-        link='/interview'
+        img='/interview.svg'
+        link='/interviews'
         description='Here I have a collection of interview questions for frontend as well as backend.'
       />
     </Container>
