@@ -1,4 +1,5 @@
-import StyledComponentsRegistry from '../lib/registry'
+import StyledComponentsRegistry from '@/lib/registry'
+import Header from '@/components/Header'
 
 
 export const metadata = {
@@ -10,6 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <StyledComponentsRegistry>
         <body >
+          <Header />
           {children}
         </body>
       </StyledComponentsRegistry>
