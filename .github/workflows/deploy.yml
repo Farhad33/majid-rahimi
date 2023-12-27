@@ -28,13 +28,13 @@ jobs:
         env:
           IP: ${{secrets.ip}}
         run: |
-          scp -i $HOME/VFix.pem -o StrictHostKeyChecking=no majid.tar.gz ubuntu@"$IP":~
+          scp -i $HOME/VFix.pem -o StrictHostKeyChecking=no majid.tar.gz ubuntu@$IP:~
         
       - name: Deploy project
         env:
           IP: ${{secrets.ip}}
         run: |
-          ssh -i $HOME/VFix.pem -o StrictHostKeyChecking=no ubuntu@"$IP" "
+          ssh -i $HOME/VFix.pem -o StrictHostKeyChecking=no ubuntu@$IP "
             mkdir -p majid-temp &&
             tar xf majid.tar.gz -C majid-temp 2> /dev/null &&
             rm majid.tar.gz &&
