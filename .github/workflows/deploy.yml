@@ -26,13 +26,13 @@ jobs:
 
       - name: Copy project to server
         env:
-          IP: ${{secrets.ip}}
+          IP: ${{secrets.IP}}
         run: |
           scp -i $HOME/VFix.pem -o StrictHostKeyChecking=no majid.tar.gz ubuntu@$IP:~
         
       - name: Deploy project
         env:
-          IP: ${{secrets.ip}}
+          IP: ${{secrets.IP}}
         run: |
           ssh -i $HOME/VFix.pem -o StrictHostKeyChecking=no ubuntu@$IP "
             mkdir -p majid-temp &&
