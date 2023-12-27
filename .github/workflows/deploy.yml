@@ -25,12 +25,16 @@ jobs:
           chmod 600 ${HOME}/VFix.pem
 
       - name: Copy project to server
+        env:
+          IP: ${{secrets.ip}}
         run: |
-          scp -i $HOME/VFix.pem -o StrictHostKeyChecking=no majid.tar.gz ubuntu@54.70.76.118:~
+          scp -i $HOME/VFix.pem -o StrictHostKeyChecking=no majid.tar.gz ubuntu@"$IP":~
         
       - name: Deploy project
+        env:
+          IP: ${{secrets.ip}}
         run: |
-          ssh -i $HOME/VFix.pem -o StrictHostKeyChecking=no ubuntu@54.70.76.118 "
+          ssh -i $HOME/VFix.pem -o StrictHostKeyChecking=no ubuntu@"$IP" "
             mkdir -p majid-temp &&
             tar xf majid.tar.gz -C majid-temp 2> /dev/null &&
             rm majid.tar.gz &&
