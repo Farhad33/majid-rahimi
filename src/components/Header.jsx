@@ -15,6 +15,7 @@ export default function Menu() {
                 height={80}
                 alt="majid logo"
                 onClick={() => push('/')}
+                priority={true}
             />
             <Nav>
                 <Item href="/">Home</Item>
@@ -34,6 +35,7 @@ const Header = Styled.header`
     padding: 10px 20px;
     background: white;
     box-shadow: 0px 0px 40px -10px rgba(0,0,0,0.3);
+    z-index: 1;
 `
 const Nav = Styled.nav`
     display: flex;

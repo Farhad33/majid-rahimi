@@ -1,5 +1,4 @@
 import Container from '@/components/Container'
-import Typography from '@/components/Typography'
 
 export const metadata = {
   title: "Majid's Resume",
@@ -7,9 +6,10 @@ export const metadata = {
 }
 
 export default function Resume() {
+  const documentURL = 'https://docs.google.com/document/d/1shuSbqOjGzo-OGUTBSm9dcd2j3upstRGLKO0um9i8Cg/edit?usp=sharing'
   return (
     <Container column center>
-      <Typography variant="h4">Majid's Resume</Typography>
+      <iframe src={documentURL} width="100%" height="1000px" />
     </Container>
   )
 }

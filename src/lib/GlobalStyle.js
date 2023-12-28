@@ -8,5 +8,9 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
       font-family: system-ui, sans-serif;
+      height: 100%;
+  }
+  html {
+    height: 100%;
   }
 `

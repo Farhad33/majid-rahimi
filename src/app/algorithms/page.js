@@ -1,5 +1,6 @@
 import Container from '@/components/Container'
-import Typography from '@/components/Typography'
+import SidePanel from '@/components/SidePanel'
+import { algorithems } from './data'
 
 export const metadata = {
   title: "Majid's Algorithms",
@@ -7,9 +8,10 @@ export const metadata = {
 }
 
 export default function Algorithms() {
+
   return (
-    <Container column center>
-      <Typography variant="h4">Majid's Algorithms</Typography>
+    <Container>
+      <SidePanel items={algorithems} />
     </Container>
   )
 }
