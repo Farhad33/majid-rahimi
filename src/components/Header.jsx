@@ -30,12 +30,12 @@ const Header = Styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
+    position: sticky !important;
+    top: 0 !important;
     padding: 10px 20px;
     background: white;
     box-shadow: 0px 0px 40px -10px rgba(0,0,0,0.3);
-    z-index: 1;
+    z-index: 11;
 `
 const Nav = Styled.nav`
     display: flex;

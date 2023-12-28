@@ -1,6 +1,5 @@
 'use client'
-
-import React, { useState } from'react'
+import React, { useState, useEffect } from'react'
 import Styled from 'styled-components'
 import Editor from "@monaco-editor/react";
 import SidePanel from '@/components/SidePanel'
@@ -11,7 +10,6 @@ import { algorithems } from '@/app/algorithms/data'
 export default function Algorithm({ params }) {
     const [editorHeight, setEditorHeight] = useState('auto');
 
-
     const handleEditorDidMount = (editor) => {
         setTimeout(() => {
             editor.getAction('editor.action.formatDocument').run();
@@ -19,7 +17,8 @@ export default function Algorithm({ params }) {
         editor.updateOptions({
             scrollbar: {
                 vertical: 'hidden',
-                horizontal: 'visible',
+                // horizontal: 'visible',
+                horizontal: 'hidden',
                 handleMouseWheel: false
             },
             wordWrap: 'off',
@@ -34,9 +33,8 @@ export default function Algorithm({ params }) {
           };
 
           updateHeight();
-    };
+    }
       
-
     return (
         <AlgorithmContainer>
             <SidePanel items={algorithems} />
@@ -69,7 +67,6 @@ export default function Algorithm({ params }) {
 }
 
 const AlgorithmContainer = Styled(Container)`
-
 `
 const PageContainer = Styled(Container)`
     width: 80%;
@@ -88,8 +85,12 @@ const ContentContainer = Styled(Container)`
     > pre {
         text-wrap: wrap;
         margin: 20px 0;
+        white-space: pre-wrap; 
     }
     .monaco-editor .overlayWidgets .iPadShowKeyboard {
         display: none;
+    }
+    .monaco-editor {
+        touch-action: none;
     }
 `

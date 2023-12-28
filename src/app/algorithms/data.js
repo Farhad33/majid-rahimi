@@ -138,5 +138,91 @@ bfsTraversal(root);
 `
             },
         ]
-    }
+    },
+    'test': {
+        title: "Test",
+        link: '/algorithms/test',
+        content: [
+            {
+                description: '',
+                code: ''
+            },
+        ],
+    },
+    'test2': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test3': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test4': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test5': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test6': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test7': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test8': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test9': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test10': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test11': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test12': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test13': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test14': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test15': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test16': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test17': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test18': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test19': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
+    'test20': {
+        title: "Test",
+        link: '/algorithms/test',
+    },
 }
