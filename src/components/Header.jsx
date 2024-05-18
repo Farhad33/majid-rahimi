@@ -34,7 +34,7 @@ const Header = Styled.header`
     top: 0 !important;
     padding: 10px 20px;
     background: white;
-    box-shadow: 0px 0px 40px -10px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 40px -10px #0000004c;
     z-index: 11;
 `
 const Nav = Styled.nav`

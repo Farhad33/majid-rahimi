@@ -7,6 +7,7 @@ export const metadata = {
 }
 
 export default function HomePage() {
+  return <h1>Work in progress ...</h1>
   return (
     <Container column center>
       <HomePageBox
