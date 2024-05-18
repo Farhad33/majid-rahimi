@@ -17,11 +17,11 @@ export default function Menu() {
                 onClick={() => push('/')}
                 priority={true}
             />
-            <Nav>
+            {/* <Nav>
                 <Item href="/">Home</Item>
                 <Item href="/resume">Resume</Item>
                 <Item href="/projects">Projects</Item>
-            </Nav>
+            </Nav> */}
         </Header>
     )
 }
